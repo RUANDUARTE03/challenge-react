@@ -1,6 +1,6 @@
 import React from 'react';
-import Nav from './components/nav'
-import Keyboard from './components/keyboard'
+import Nav from './containers/nav'
+import Keyboard from './containers/keyboard'
 
 function App() {
   return (

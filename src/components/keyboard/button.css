@@ -1,0 +1,25 @@
+.button-wrapper {
+  height: 10vh;
+  width: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 30px;
+  background-color: transparent;
+  color: white;
+  outline: 1px solid white;
+}
+
+.button-wrapper-lg {
+  height: 10vh;
+  width: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 30px;
+  background-color: transparent;
+  color: white;
+  outline: 1px solid white;
+}

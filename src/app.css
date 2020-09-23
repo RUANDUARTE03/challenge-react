@@ -9,7 +9,7 @@ body {
 
 .main-navigation {
   display: flex;
-  /* background-color: black; */
+  background-color: black;
   width: 90px;
   overflow: hidden;
   /* opacity: 0.4; */
@@ -38,7 +38,7 @@ li {
 }
 
 .main-navigation nav {
-  width: 100%;
+  width: 100vw;
 }
 .main-navigation li {
   display: flex;
@@ -63,15 +63,32 @@ li {
   border-right-color: white;
 }
 
+.body-keyboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .body-keyboard input {
   background-color: transparent;
   border-width: 0;
   font-size: 40px;
+  width: 60vh;
 }
 
 input::placeholder {
   color: white;
   font-weight: 700;
+}
+
+.keyboard {
+  padding-top: 40px;
+}
+
+.row-keyboard {
+  display: flex
 }
 
 
