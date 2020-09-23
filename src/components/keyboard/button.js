@@ -4,9 +4,9 @@ import './button.css'
 export const Button = (props) => {
   return (
     <div
-      className='button-wrapper'
+      className={`button-wrapper nv-item ${props.letter === 'a' ? 'nv-active' : null}`}
     >
-      {props.children}
+      {props.letter}
     </div>
   )
 }

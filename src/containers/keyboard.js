@@ -9,56 +9,56 @@ export default function Keyboard() {
         <input type='text' placeholder='Busca' />
         <div className='keyboard'>
           <div className='row-keyboard'>
-            <Button>a</Button>
-            <Button>b</Button>
-            <Button>c</Button>
-            <Button>d</Button>
-            <Button>e</Button>
-            <Button>f</Button>
+            <Button letter={'a'} />
+            <Button letter={'b'} />
+            <Button letter={'c'} />
+            <Button letter={'d'} />
+            <Button letter={'e'} />
+            <Button letter={'f'} />
           </div>
           <div className='row-keyboard'>
-            <Button>g</Button>
-            <Button>h</Button>
-            <Button>i</Button>
-            <Button>j</Button>
-            <Button>k</Button>
-            <Button>l</Button>
+            <Button letter={'g'} />
+            <Button letter={'h'} />
+            <Button letter={'i'} />
+            <Button letter={'j'} />
+            <Button letter={'k'} />
+            <Button letter={'l'} />
           </div>
           <div className='row-keyboard'>
-            <Button>m</Button>
-            <Button>n</Button>
-            <Button>o</Button>
-            <Button>p</Button>
-            <Button>q</Button>
-            <Button>r</Button>
+            <Button letter={'m'} />
+            <Button letter={'n'} />
+            <Button letter={'o'} />
+            <Button letter={'p'} />
+            <Button letter={'q'} />
+            <Button letter={'r'} />
           </div>
           <div className='row-keyboard'>
-            <Button>s</Button>
-            <Button>t</Button>
-            <Button>u</Button>
-            <Button>v</Button>
-            <Button>w</Button>
-            <Button>x</Button>
+            <Button letter={'s'} />
+            <Button letter={'t'} />
+            <Button letter={'u'} />
+            <Button letter={'v'} />
+            <Button letter={'w'} />
+            <Button letter={'x'} />
           </div>
           <div className='row-keyboard'>
-            <Button>y</Button>
-            <Button>z</Button>
-            <Button>0</Button>
-            <Button>1</Button>
-            <Button>2</Button>
-            <Button>3</Button>
+            <Button letter={'y'} />
+            <Button letter={'z'} />
+            <Button letter={'0'} />
+            <Button letter={'1'} />
+            <Button letter={'2'} />
+            <Button letter={'3'} />
           </div>
           <div className='row-keyboard'>
-            <Button>4</Button>
-            <Button>5</Button>
-            <Button>6</Button>
-            <Button>7</Button>
-            <Button>8</Button>
-            <Button>9</Button>
+            <Button letter={'4'} />
+            <Button letter={'5'} />
+            <Button letter={'6'} />
+            <Button letter={'7'} />
+            <Button letter={'8'} />
+            <Button letter={'9'} />
           </div>
           <div className='row-keyboard'>
-            <ButtonLG>Espaço</ButtonLG>
-            <ButtonLG>Apagar</ButtonLG>
+            <ButtonLG eventKeyboard={'Espaço'} />
+            <ButtonLG eventKeyboard={'Apagar'} />
           </div>
         </div>
       </div>
