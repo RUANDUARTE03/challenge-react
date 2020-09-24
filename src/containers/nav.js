@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Nav() {
   return (
-    <div className='main-navigation'>
+    <div className='main-navigation' id='nav'>
       <nav>
         <ul>
           <li className='nv-item'>

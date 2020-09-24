@@ -38,7 +38,7 @@ body {
   border-right-color: white;
 }
 
-.main-navigation:hover {
+.main-navigation-active {
   width: 280px;
 }
 

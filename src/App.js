@@ -57,6 +57,8 @@ function App() {
     let object = document.getElementsByClassName('nv-item')
     let array = Array.from(object)
 
+    let nav = document.getElementById('nav')
+
     let scrollTitles = document.getElementById('scrollTitles')
     let lengthItemsTitle = document.getElementsByClassName('itemTitle').length
     let firstTitle = 44
@@ -86,7 +88,7 @@ function App() {
               index === keyboardRowSixFirstElement ||
               index === keyboardTab
             ) {
-              next = init
+              next = init; nav.classList.add('main-navigation-active')
             }
 
             //PRIMEIRO ITEM DO TITULO
@@ -116,14 +118,13 @@ function App() {
               next = index - 1
             }
 
-            console.log('left => ' + index)
             break
 
           case 39: //RIGHT
 
             //QUALQUER ITEM DO NAV IR PARA A LETRA A
             if (index < 5) {
-              next = keyboardRowOneFirstElement
+              next = keyboardRowOneFirstElement; nav.classList.remove('main-navigation-active')
             }
 
             //ULTIMA COLUNA DO TECLADO 
@@ -157,7 +158,6 @@ function App() {
               next += index
             }
 
-            console.log('right => ' + index)
             break
 
           case 40: //DOWN
@@ -198,7 +198,6 @@ function App() {
               next = index + numberColsKeyboard
             }
 
-            console.log('down => ' + index)
             break
 
           case 38: //UP
@@ -232,7 +231,7 @@ function App() {
               next = index
             }
 
-            else if (index >= firstVideo) { 
+            else if (index >= firstVideo) {
               next = firstTitle; scrollVideos.scrollLeft -= 2000
             }
 
@@ -241,9 +240,9 @@ function App() {
               next = index - numberColsKeyboard
             }
 
-            console.log('up => ' + index)
             break
-          case 13: //enter
+
+          case 13: //ENTER
             next = index
             break
           default:
@@ -271,6 +270,7 @@ function App() {
       }
       index++
     })
+
   }
 
   return (
