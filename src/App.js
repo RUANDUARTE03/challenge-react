@@ -123,7 +123,7 @@ function App() {
           case 39: //RIGHT
 
             //QUALQUER ITEM DO NAV IR PARA A LETRA A
-            if (index < 5) {
+            if (index <= 5) {
               next = keyboardRowOneFirstElement; nav.classList.remove('main-navigation-active')
             }
 
@@ -244,6 +244,7 @@ function App() {
 
           case 13: //ENTER
             next = index
+            console.log('enter pressionado')
             break
           default:
             break
