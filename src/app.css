@@ -5,6 +5,20 @@
 
 body {
   background-color: black;
+  overflow-y: hidden;
+}
+
+.nv-item {
+  color: white;
+}
+
+.nv-active {
+  background-color: white;
+  color: black;
+}
+
+.container {
+  display: flex;
 }
 
 .main-navigation {
@@ -91,15 +105,87 @@ input::placeholder {
   display: flex
 }
 
-.nv-item {
+.container-videos {
+  width: 50vw;
+  height: 100vh;
+  
+  border-style: solid;
+  border-width: 0 1px 0 0;
+  border-right-color: white;
+}
+
+.body-videos {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-titles {
+  height: 40%;
+  width: 90%;
+  padding-top: 5%;
+}
+
+.row-videos {
+  margin-top: 5%;
+  height: 40%;
+  width: 100%;
+}
+
+.container-videos h2 {
   color: white;
 }
 
-.nv-active {
-  background-color: white;
-  color: black;
+.items-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
 }
 
+.items {
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.itemTitle {
+  flex: none;
+  height: 90%;
+  width: 180px;
+  margin-left: 10px;
+}
+
+.itemTitle:first-child {
+  margin-left: 0;
+}
+
+.itemTitle img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.itemVideos {
+  flex: none;
+  height: 90%;
+  width: 180px;
+  margin-left: 10px;
+}
+
+.itemVideos:first-child {
+  margin-left: 0;
+}
+
+.itemVideos img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+}
 
 
 

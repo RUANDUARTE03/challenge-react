@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 export default function Nav() {
-  // const [collapsed, setCollapsed] = useState(false)
-
-  // useEffect(() => {
-  //    let object = document.getElementsByClassName('nv-item')
-  //    let array = Array.from(object)
-  //    array.map((i) => {
-  //      if (i.classList.contains('nv-active')) {
-  //        setCollapsed(false)
-  //      } else {
-  //        setCollapsed(true)
-  //      }
-  //    })
-  //    console.log(collapsed)
-  // })
-
   return (
-    <div className='main-navigation' id='nav'>
+    <div className='main-navigation'>
       <nav>
         <ul>
           <li className='nv-item'>

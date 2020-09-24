@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Nav from './containers/nav'
 import Keyboard from './containers/keyboard'
+import Videos from './containers/videos'
+
+import Titles from './json/titles.json'
+import Herois from './json/videos.json'
 
 function App() {
-  const [text, setText] = useState('')
-
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown, true)
     return () => {
@@ -23,6 +25,14 @@ function App() {
     let keyboardRowFourFirstElement = 24
     let keyboardRowFiveFirstElement = 30
     let keyboardRowSixFirstElement = 36
+
+    let keyboardRowOneLastElement = 11
+    let keyboardRowTwoLastElement = 17
+    let keyboardRowThreeLastElement = 23
+    let keyboardRowFourLastElement = 29
+    let keyboardRowFiveLastElement = 35
+    let keyboardRowSixLastElement = 41
+
     let keyboardTab = 42
     let keyboardDel = 43
 
@@ -47,101 +57,190 @@ function App() {
     let object = document.getElementsByClassName('nv-item')
     let array = Array.from(object)
 
+    let scrollTitles = document.getElementById('scrollTitles')
+    let lengthItemsTitle = document.getElementsByClassName('itemTitle').length
+    let firstTitle = 44
+    let lastTitleInitial = 44 + lengthItemsTitle
+    let lastTitle = lastTitleInitial - 1
+
+    let scrollVideos = document.getElementById('scrollVideos')
+    let lengthItemsVideos = document.getElementsByClassName('itemVideos').length
+    let firstVideo = lastTitle + 1
+    let lastVideoInitial = firstVideo + lengthItemsVideos
+    let lastVideo = lastVideoInitial - 1
+
     array.map((i) => {
-      var x = i.innerHTML
+
       if (i.classList.contains('nv-active')) {
         switch (e.keyCode) {
 
-          case 37: // left
+          case 37: //LEFT
+
             //PRIMEIRA COLUNA DO TECLADO
-            if (index === keyboardRowOneFirstElement) {
-              next = init
-            } else if (index === keyboardRowTwoFirstElement) {
-              next = init
-            } else if (index === keyboardRowThreeFirstElement) {
-              next = init
-            } else if (index === keyboardRowFourFirstElement) {
-              next = init
-            } else if (index === keyboardRowFiveFirstElement) {
-              next = init
-            } else if (index === keyboardRowSixFirstElement) {
-              next = init
-            } else if (index === keyboardTab) {
+            if (
+              index === keyboardRowOneFirstElement ||
+              index === keyboardRowTwoFirstElement ||
+              index === keyboardRowThreeFirstElement ||
+              index === keyboardRowFourFirstElement ||
+              index === keyboardRowFiveFirstElement ||
+              index === keyboardRowSixFirstElement ||
+              index === keyboardTab
+            ) {
               next = init
             }
 
+            //PRIMEIRO ITEM DO TITULO
+            else if (index === firstTitle) {
+              next = firstRowItemSixF
+            }
+
+            //QUALQUER ITEM DO NAV
             else if (index < keyboardRowOneFirstElement) {
               next = index
             }
+
+            //QUALQUER ITEM DO TITULO FAZER A ROLAGEM
+            else if (index >= 45 && index < lastTitle) {
+              scrollTitles.scrollLeft -= 190; next = index - 1
+            }
+
+            //QUALQUER ITEM DO VIDEO FAZER A ROLAGEM
+            else if (index > firstVideo && index < lastVideo) {
+              scrollVideos.scrollLeft -= 190; next = index - 1
+            } else if (index === firstVideo) {
+              next = firstRowItemSixF
+            }
+
+            //REGRA GERAL
             else {
               next = index - 1
             }
+
             console.log('left => ' + index)
             break
 
-          case 39: // right
+          case 39: //RIGHT
+
+            //QUALQUER ITEM DO NAV IR PARA A LETRA A
             if (index < 5) {
               next = keyboardRowOneFirstElement
             }
 
+            //ULTIMA COLUNA DO TECLADO 
+            else if (
+              index === keyboardRowOneLastElement ||
+              index === keyboardRowTwoLastElement ||
+              index === keyboardRowThreeLastElement ||
+              index === keyboardRowFourLastElement ||
+              index === keyboardRowFiveLastElement ||
+              index === keyboardRowSixLastElement
+            ) {
+              next = firstTitle
+            }
+
+            //QUALQUER ITEM DO TITULO FAZER A ROLAGEM
+            else if (index >= 45 && index < lastTitle) {
+              scrollTitles.scrollLeft += 190; next += index
+            } else if (index === lastTitle) {
+              next = index
+            }
+
+            //QUALQUER ITEM DO VIDEO FAZER A ROLAGEM
+            else if (index > firstVideo && index < lastVideo) {
+              scrollVideos.scrollLeft += 190; next += index
+            } else if (index === lastVideo) {
+              next = index
+            }
+
+            //REGRA GERAL
             else {
               next += index
             }
+
             console.log('right => ' + index)
             break
 
-          case 40: // down
+          case 40: //DOWN
+
+            //ITENS DA NAV
             if (index < 5) {
               next += index
             } else if (index === lastItemNav)
               next = index
 
-            else if (index === lastRowItemOne4) {
+            //ULTIMA LINHA DO TECLADO
+            else if (
+              index === lastRowItemOne4 ||
+              index === lastRowItemTwo5 ||
+              index === lastRowItemThree6
+            ) {
               next = keyboardTab
-            } else if (index === lastRowItemTwo5) {
-              next = keyboardTab
-            } else if (index === lastRowItemThree6) {
-              next = keyboardTab
-            } else if (index === lastRowItemFour7) {
-              next = keyboardDel
-            } else if (index === lastRowItemFive8) {
-              next = keyboardDel
-            } else if (index === lastRowItemSix9) {
+            } else if (
+              index === lastRowItemFour7 ||
+              index === lastRowItemFive8 ||
+              index === lastRowItemSix9
+            ) {
               next = keyboardDel
             }
 
+            //ESPAÇO OU APAGAR NÂO IR PARA PRIMEIRO ITEM DO TITULO
+            else if (index === keyboardTab || index === keyboardDel) {
+              next = index
+            }
+
+            //QUALQUER ITEM DO TITULO IR PARA O PRIMEIRO VIDEO
+            else if (index >= 44 && index <= lastTitle) {
+              next = firstVideo; scrollTitles.scrollLeft -= 2000
+            }
+
+            //REGRA PARA O TECLADO
             else {
               next = index + numberColsKeyboard
             }
+
             console.log('down => ' + index)
             break
 
-          case 38: //up
+          case 38: //UP
+
+            //ITENS DO NAC
             if (index <= 5) {
               next = index - 1
-            } else if (index === firstRowItemOneA) {
-              next = index
-            } else if (index === firstRowItemTwoB) {
-              next = index
-            } else if (index === firstRowItemThreeC) {
-              next = index
-            } else if (index === firstRowItemFourD) {
-              next = index
-            } else if (index === firstRowItemFiveE) {
-              next = index
-            } else if (index === firstRowItemSixF) {
+            }
+
+            //PRIMEIRA LINHA DO TECLADO
+            else if (
+              index === firstRowItemOneA ||
+              index === firstRowItemTwoB ||
+              index === firstRowItemThreeC ||
+              index === firstRowItemFourD ||
+              index === firstRowItemFiveE ||
+              index === firstRowItemSixF
+            ) {
               next = index
             }
 
+            //ESPAÇO OU APAGAR O ITEM CENTRAL ACIMA
             else if (index === keyboardTab) {
               next = lastRowItemTwo5
             } else if (index === keyboardDel) {
               next = lastRowItemFive8
             }
 
+            //ITENS DO VIDEO NAO TEREM FUNCAO PARA CIMA
+            else if (index >= 44 && index <= lastTitle) {
+              next = index
+            }
+
+            else if (index >= firstVideo) { 
+              next = firstTitle; scrollVideos.scrollLeft -= 2000
+            }
+
+            //REGRA DO TECLADO
             else {
               next = index - numberColsKeyboard
             }
+
             console.log('up => ' + index)
             break
           case 13: //enter
@@ -175,10 +274,11 @@ function App() {
   }
 
   return (
-    <>
+    <div className='container'>
       <Nav />
       <Keyboard />
-    </>
+      <Videos title={Titles} heroi={Herois} />
+    </div>
 
   );
 }
