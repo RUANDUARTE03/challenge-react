@@ -18,3 +18,16 @@ Via linha de comando instale os pacotes com
 Após instalados os pacotes, basta execultar o projeto com `npm start` ou `yarn start`
 
 Agora o projeto será execultado em https://localhost:3000
+
+## Pesquisas sugeridas
+- Homem de Ferro
+- Capitão América
+- Thor
+- Gavião Arqueiro
+- Walkíria
+
+- Samurai 7
+- Pokemon
+- Cavaleiros do Zodiaco
+- Beyblade
+- Ergo Proxy
