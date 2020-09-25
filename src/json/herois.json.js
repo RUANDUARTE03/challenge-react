@@ -1,4 +1,4 @@
-const Videos = [
+const Herois = [
   {
     id: 1,
     title: 'Homem de Ferro',
@@ -76,4 +76,4 @@ const Videos = [
   }
 ]
 
-export default Videos
+export default Herois

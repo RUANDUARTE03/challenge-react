@@ -1,18 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Nav from './containers/nav'
 import Keyboard from './containers/keyboard'
-import Videos from './containers/videos'
+import Carousel from './containers/carousel'
 
-import Titles from './json/titles.json'
-import Herois from './json/videos.json'
+import Animes from './json/animes.json'
+import Herois from './json/herois.json'
 
 function App() {
+  const [arrayAnimes, setArrayAnimes] = useState([])
+  const [ArrayHerois, setArrayHerois] = useState([])
+
+  const [valueInput, setValueInput] = useState('')
+
+  const [newArrayAnime, setNewArrayAnime] = useState([])
+  const [newArrayHeroi, setNewArrayHeroi] = useState([])
+
   useEffect(() => {
+    setArrayAnimes(Animes)
+    setArrayHerois(Herois)
+
+    const resultsAnime = arrayAnimes.filter((i) => {
+      return i.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(valueInput.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+    })
+    setNewArrayAnime(resultsAnime)
+
+    const resultsHeroi = ArrayHerois.filter((i) => {
+      return i.title.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").includes(valueInput.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))
+    })
+    setNewArrayHeroi(resultsHeroi)
+
     document.addEventListener('keydown', onKeyDown, true)
     return () => {
       document.removeEventListener('keydown', onKeyDown, true)
     }
-  }, [])
+  }, [ArrayHerois, ArrayHerois, valueInput])
 
   const onKeyDown = (e) => {
     let init = 1
@@ -59,17 +80,17 @@ function App() {
 
     let nav = document.getElementById('nav')
 
-    let scrollTitles = document.getElementById('scrollTitles')
-    let lengthItemsTitle = document.getElementsByClassName('itemTitle').length
-    let firstTitle = 44
-    let lastTitleInitial = 44 + lengthItemsTitle
-    let lastTitle = lastTitleInitial - 1
+    let scrollAnimes = document.getElementById('scrollAnime')
+    let lengthItemsAnimes = document.getElementsByClassName('item-anime').length
+    let firstAnime = 44
+    let lastAnimeInitial = 44 + lengthItemsAnimes
+    let lastAnime = lastAnimeInitial - 1
 
-    let scrollVideos = document.getElementById('scrollVideos')
-    let lengthItemsVideos = document.getElementsByClassName('itemVideos').length
-    let firstVideo = lastTitle + 1
-    let lastVideoInitial = firstVideo + lengthItemsVideos
-    let lastVideo = lastVideoInitial - 1
+    let scrollHerois = document.getElementById('scrollHeroi')
+    let lengthItemsHerois = document.getElementsByClassName('item-heroi').length
+    let firstHeroi = lastAnime + 1
+    let lastHeroiInitial = firstHeroi + lengthItemsHerois
+    let lastHeroi = lastHeroiInitial - 1
 
     array.map((i) => {
 
@@ -92,7 +113,7 @@ function App() {
             }
 
             //PRIMEIRO ITEM DO TITULO
-            else if (index === firstTitle) {
+            else if (index === firstAnime) {
               next = firstRowItemSixF
             }
 
@@ -102,14 +123,14 @@ function App() {
             }
 
             //QUALQUER ITEM DO TITULO FAZER A ROLAGEM
-            else if (index >= 45 && index < lastTitle) {
-              scrollTitles.scrollLeft -= 190; next = index - 1
+            else if (index >= 45 && index < lastAnime) {
+              scrollAnimes.scrollLeft -= 190; next = index - 1
             }
 
             //QUALQUER ITEM DO VIDEO FAZER A ROLAGEM
-            else if (index > firstVideo && index < lastVideo) {
-              scrollVideos.scrollLeft -= 190; next = index - 1
-            } else if (index === firstVideo) {
+            else if (index > firstHeroi && index < lastHeroi) {
+              scrollHerois.scrollLeft -= 190; next = index - 1
+            } else if (index === firstHeroi) {
               next = firstRowItemSixF
             }
 
@@ -136,20 +157,20 @@ function App() {
               index === keyboardRowFiveLastElement ||
               index === keyboardRowSixLastElement
             ) {
-              next = firstTitle
+              next = firstAnime
             }
 
             //QUALQUER ITEM DO TITULO FAZER A ROLAGEM
-            else if (index >= 45 && index < lastTitle) {
-              scrollTitles.scrollLeft += 190; next += index
-            } else if (index === lastTitle) {
+            else if (index >= 45 && index < lastAnime) {
+              scrollAnimes.scrollLeft += 190; next += index
+            } else if (index === lastAnime) {
               next = index
             }
 
             //QUALQUER ITEM DO VIDEO FAZER A ROLAGEM
-            else if (index > firstVideo && index < lastVideo) {
-              scrollVideos.scrollLeft += 190; next += index
-            } else if (index === lastVideo) {
+            else if (index > firstHeroi && index < lastHeroi) {
+              scrollHerois.scrollLeft += 190; next += index
+            } else if (index === lastHeroi) {
               next = index
             }
 
@@ -189,8 +210,8 @@ function App() {
             }
 
             //QUALQUER ITEM DO TITULO IR PARA O PRIMEIRO VIDEO
-            else if (index >= 44 && index <= lastTitle) {
-              next = firstVideo; scrollTitles.scrollLeft -= 2000
+            else if (index >= 44 && index <= lastAnime) {
+              next = firstHeroi; scrollAnimes.scrollLeft -= 2000
             }
 
             //REGRA PARA O TECLADO
@@ -227,12 +248,12 @@ function App() {
             }
 
             //ITENS DO VIDEO NAO TEREM FUNCAO PARA CIMA
-            else if (index >= 44 && index <= lastTitle) {
+            else if (index >= 44 && index <= lastAnime) {
               next = index
             }
 
-            else if (index >= firstVideo) {
-              next = firstTitle; scrollVideos.scrollLeft -= 2000
+            else if (index >= firstHeroi) {
+              next = firstAnime; scrollHerois.scrollLeft -= 3000
             }
 
             //REGRA DO TECLADO
@@ -243,10 +264,28 @@ function App() {
             break
 
           case 13: //ENTER
-            next = index
-            console.log('enter pressionado')
+            const value = valueInput
+            if (index >= keyboardRowOneFirstElement && index <= lastRowItemSix9) {
+              next = index
+              let letter = i.innerHTML
+              setValueInput(value.concat(letter))
+            } else if (index === keyboardTab) {
+              next = index
+              let space = ' '
+              setValueInput(value.concat(space))
+            } else if (index === keyboardDel) {
+              next = index
+              let del = value.substring(0, (value.length - 1))
+              setValueInput(del)
+            }
+
+            else {
+              next = index
+            }
+
             break
           default:
+            next = index
             break
         }
       }
@@ -277,8 +316,8 @@ function App() {
   return (
     <div className='container'>
       <Nav />
-      <Keyboard />
-      <Videos title={Titles} heroi={Herois} />
+      <Keyboard textInput={valueInput} />
+      <Carousel textInput={valueInput} animes={newArrayAnime} herois={newArrayHeroi} />
     </div>
 
   );

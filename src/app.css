@@ -22,6 +22,8 @@ body {
   display: flex;
 }
 
+/* style nav */
+
 .main-navigation {
   display: flex;
   background-color: black;
@@ -33,7 +35,6 @@ body {
   transition: all 0.5s;
   justify-items: center;
   align-items: center;
-  
   border-style: solid;
   border-width: 0 1px 0 0;
   border-right-color: white;
@@ -43,9 +44,7 @@ body {
   width: 280px;
 }
 
-nav,
-ul,
-li {
+nav, ul, li {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -55,11 +54,11 @@ li {
 .main-navigation nav {
   width: 100vw;
 }
+
 .main-navigation li {
   display: flex;
   align-items: center;
   margin: 0 0 25px;
-  /* color: white; */
 }
 
 .main-navigation i {
@@ -72,7 +71,6 @@ li {
   width: 50vw;
   height: 100vh;
   margin-left: 90px;
-  
   border-style: solid;
   border-width: 0 1px 0 0;
   border-right-color: white;
@@ -86,15 +84,15 @@ li {
   align-items: center;
 }
 
-.body-keyboard input {
-  background-color: transparent;
+.body-keyboard textarea {
+  background-color: #ffffff;
   border-width: 0;
   font-size: 40px;
   width: 60vh;
 }
 
-input::placeholder {
-  color: white;
+textarea::placeholder {
+  color: black;
   font-weight: 700;
 }
 
@@ -106,7 +104,9 @@ input::placeholder {
   display: flex
 }
 
-.container-videos {
+/* style carousel */
+
+.container-carousel {
   width: 50vw;
   height: 100vh;
   
@@ -115,7 +115,7 @@ input::placeholder {
   border-right-color: white;
 }
 
-.body-videos {
+.body-carousel {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -123,20 +123,19 @@ input::placeholder {
   align-items: center;
 }
 
-.row-titles {
+.row{
   height: 40%;
   width: 90%;
   padding-top: 5%;
 }
 
-.row-videos {
-  margin-top: 5%;
-  height: 40%;
-  width: 100%;
+.container-carousel h2, h1, h3 {
+  color: white;
 }
 
-.container-videos h2 {
-  color: white;
+.container-carousel h1:first-child {
+  text-align: center;
+  width: 90%;
 }
 
 .items-wrapper {
@@ -154,40 +153,34 @@ input::placeholder {
   position: relative;
 }
 
-.itemTitle {
+.item-anime, .item-heroi{
   flex: none;
   height: 90%;
   width: 180px;
   margin-left: 10px;
 }
 
-.itemTitle:first-child {
+.item-anime:first-child, .item-heroi:first-child {
   margin-left: 0;
 }
 
-.itemTitle img {
+.item-anime img, .item-heroi img {
   height: 70%;
   width: 100%;
   object-fit: cover;
 }
 
-.itemVideos {
-  flex: none;
-  height: 90%;
-  width: 180px;
-  margin-left: 10px;
+.item-anime p, .item-heroi p {
+  font-size: 18px;
+  text-align: center;
 }
 
-.itemVideos:first-child {
-  margin-left: 0;
-}
-
-.itemVideos img {
-  height: 70%;
+.notAnime, .notHeroi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  object-fit: cover;
 }
-
 
 
 

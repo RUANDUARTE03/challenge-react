@@ -2,11 +2,14 @@ import React from 'react'
 import { Button } from '../components/keyboard/button'
 import { ButtonLG } from '../components/keyboard/buttonLG'
 
-export default function Keyboard() {
+export default function Keyboard({ textInput }) {
   return (
     <div className='container-keyboard'>
       <div className='body-keyboard'>
-        <input type='text' placeholder='Busca' />
+        <textarea
+          placeholder='Buscar'
+          value={textInput}
+        />
         <div className='keyboard'>
           <div className='row-keyboard'>
             <Button letter={'a'} />
