@@ -6,7 +6,8 @@
 body {
   background-color: black;
   overflow-y: hidden;
-  pointer-events: none;
+  overflow-x: hidden;
+  /* pointer-events: none; */
 }
 
 .nv-item {
@@ -126,6 +127,7 @@ textarea::placeholder {
 .row{
   height: 40%;
   width: 90%;
+  padding-right: 50px;
   padding-top: 5%;
 }
 
@@ -151,6 +153,7 @@ textarea::placeholder {
   height: 100%;
   width: 100%;
   position: relative;
+  padding-left: 25px;
 }
 
 .item-anime, .item-heroi{
@@ -163,6 +166,10 @@ textarea::placeholder {
 .item-anime:first-child, .item-heroi:first-child {
   margin-left: 0;
 }
+
+/* .item-anime:last-child {
+  margin-right: 10px;
+} */
 
 .item-anime img, .item-heroi img {
   height: 70%;

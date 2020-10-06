@@ -9,6 +9,7 @@ import Herois from './json/herois.json'
 function App() {
   const [arrayAnimes, setArrayAnimes] = useState([])
   const [ArrayHerois, setArrayHerois] = useState([])
+  const [previousIndex, setPreviousIndex] = useState('')
 
   const [valueInput, setValueInput] = useState('')
 
@@ -33,11 +34,11 @@ function App() {
     return () => {
       document.removeEventListener('keydown', onKeyDown, true)
     }
-  }, [ArrayHerois, ArrayHerois, valueInput])
+  }, [ArrayHerois, ArrayHerois, valueInput, previousIndex])
 
   const onKeyDown = (e) => {
     let init = 1
-    let index = 1;
+    let index = 1
     let next = 1;
 
     let keyboardRowOneFirstElement = 6
@@ -123,7 +124,7 @@ function App() {
             }
 
             //QUALQUER ITEM DO TITULO FAZER A ROLAGEM
-            else if (index >= 45 && index < lastAnime) {
+            else if (index >= 44 && index < lastAnime + 1) {
               scrollAnimes.scrollLeft -= 190; next = index - 1
             }
 
@@ -161,7 +162,7 @@ function App() {
             }
 
             //QUALQUER ITEM DO TITULO FAZER A ROLAGEM
-            else if (index >= 45 && index < lastAnime) {
+            else if (index >= 44 && index < lastAnime) {
               scrollAnimes.scrollLeft += 190; next += index
             } else if (index === lastAnime) {
               next = index
@@ -195,12 +196,14 @@ function App() {
               index === lastRowItemTwo5 ||
               index === lastRowItemThree6
             ) {
+              setPreviousIndex(index)
               next = keyboardTab
             } else if (
               index === lastRowItemFour7 ||
               index === lastRowItemFive8 ||
               index === lastRowItemSix9
             ) {
+              setPreviousIndex(index)
               next = keyboardDel
             }
 
@@ -242,9 +245,9 @@ function App() {
 
             //ESPAÇO OU APAGAR O ITEM CENTRAL ACIMA
             else if (index === keyboardTab) {
-              next = lastRowItemTwo5
+              next = previousIndex
             } else if (index === keyboardDel) {
-              next = lastRowItemFive8
+              next = previousIndex
             }
 
             //ITENS DO VIDEO NAO TEREM FUNCAO PARA CIMA
